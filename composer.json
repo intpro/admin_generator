@@ -13,7 +13,7 @@
         "classmap": [],
         "files": [],
         "psr-4": {
-            "Interpro\\AdminGenerator": "src/"
+            "Interpro\\AdminGenerator\\": "src/"
         }
     }
 }
