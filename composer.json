@@ -1,0 +1,19 @@
+{
+    "name": "interpro/admingenerator",
+    "description": "admin generator class",
+    "authors": [
+        {
+            "name": "KocaHocTpa",
+            "email": "demigod96@bk.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "classmap": [],
+        "files": [],
+        "psr-4": {
+            "Interpro\\AdminGenerator": "src/"
+        }
+    }
+}
