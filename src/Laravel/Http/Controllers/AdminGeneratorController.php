@@ -8,8 +8,11 @@ class AdminGeneratorController extends Controller
 
     public function index()
     {
-        $generator =new AdminGenerator;
-        return $generator->makeBlock('block');
+        $generator = new AdminGenerator;
+
+            $generator->makeBlock('dom_program');
+
+        return 'ok';
 
     }
 

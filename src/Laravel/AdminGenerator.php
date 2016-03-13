@@ -126,6 +126,8 @@ class AdminGenerator implements AdminGeneratorInterface{
                                 fwrite($block_file,'</tfoot>'.PHP_EOL);
                                 fwrite($block_file,'</table>'.PHP_EOL);
                             }else{
+                                fwrite($block_file, wrap::blockWrap());
+                                fwrite($block_file, wrap::blockLabel());
                                 fwrite($block_file,wrap::makeGroupContainer($blockname,$item));
                                 fwrite($block_file,'@foreach($'.$blockname.'->'.$item.'_group as $item_'.$item.' )'.PHP_EOL);
                                 $this->makeGroup($blockname,$item);
@@ -133,6 +135,8 @@ class AdminGenerator implements AdminGeneratorInterface{
                                 fwrite($block_file,'@endforeach'.PHP_EOL);
                                 fwrite($block_file,wrap::makeEndGroupContainer());
                                 fwrite($block_file,wrap::anyCreate($blockname,$item));
+                                fwrite($block_file, wrap::endBlockLabel());
+                                fwrite($block_file, wrap::endBlockWrap());
                             }
                         }
                     }

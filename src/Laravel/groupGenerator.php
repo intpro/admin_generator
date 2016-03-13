@@ -30,10 +30,11 @@ class groupGenerator
 
         fwrite($block_file,'<li class="group" data-group-id="{{$item_'.$groupname.'->id_field}}">');
 
+
         //dd($config[$blockname]['groups'][$groupname]);
         foreach($config[$blockname]['groups'][$groupname] as $fields => $field){
 
-            if ( array_key_exists('title',$config[$blockname]) ){
+            if ( array_key_exists('title',$config[$blockname]['groups'][$groupname] ) ){
                 if($fields === 'title'){
                     fwrite($block_file, wrap::blockWrap());
                     fwrite($block_file, wrap::blockLabel());
@@ -42,7 +43,7 @@ class groupGenerator
                     fwrite($block_file, wrap::endBlockWrap());
                 }
             }
-            if (array_key_exists('stringfields',$config[$blockname])){
+            if (array_key_exists('stringfields',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'stringfields'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -53,7 +54,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('textfields',$config[$blockname])){
+            if (array_key_exists('textfields',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'textfields'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -64,7 +65,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('images',$config[$blockname])){
+            if (array_key_exists('images',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'images'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -75,7 +76,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('numbs',$config[$blockname])){
+            if (array_key_exists('numbs',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'numbs'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -86,7 +87,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('bools',$config[$blockname])){
+            if (array_key_exists('bools',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'bools'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -124,14 +125,17 @@ class groupGenerator
         }
 
         $block_file = fopen(public_path().'/../resources/views/back/blocks/groupitems/'.$blockname.'/'.$groupname.'_edit.blade.php','w+');
-
+        fwrite($block_file,'@extends(\'back.layout\')');
+        fwrite($block_file,PHP_EOL);
+        fwrite($block_file,'@section(\'content\')');
+        fwrite($block_file,PHP_EOL);
         fwrite($block_file,'<li class="group" data-group-id="{{$item_'.$groupname.'->id_field}}">');
 
         foreach($config[$blockname]['groups'][$groupname] as $fields => $field){
 
 
 
-            if (array_key_exists('stringfields',$config[$blockname])){
+            if (array_key_exists('stringfields',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'stringfields'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -149,7 +153,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('textfields',$config[$blockname])){
+            if (array_key_exists('textfields',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'textfields'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -160,7 +164,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('images',$config[$blockname])){
+            if (array_key_exists('images',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'images'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -171,7 +175,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('numbs',$config[$blockname])){
+            if (array_key_exists('numbs',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'numbs'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -182,7 +186,7 @@ class groupGenerator
                     }
                 }
             }
-            if (array_key_exists('bools',$config[$blockname])){
+            if (array_key_exists('bools',$config[$blockname]['groups'][$groupname] )){
                 if ($fields === 'bools'){
                     foreach($field as $item){
                         fwrite($block_file, wrap::blockWrap());
@@ -226,11 +230,11 @@ class groupGenerator
 
 
         }
-        fwrite($block_file, wrap::blockWrap('buttons_block'));
+        fwrite($block_file, wrap::blockWrap('buttons'));
         fwrite($block_file, wrap::saveGroup($blockname,$groupname));
-        fwrite($block_file, wrap::deleteGroup($blockname,$groupname));
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file,'</li>');
+        fwrite($block_file,'@endsection');
         fclose($block_file);
     }
 

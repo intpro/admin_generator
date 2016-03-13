@@ -2,6 +2,6 @@
 
 Route::group(['namespace' => 'Interpro\AdminGenerator\Laravel\Http\Controllers'], function () {
 
-    Route::get('/','AdminGeneratorController@index');
+    Route::get('/generate','AdminGeneratorController@index');
 
 });
