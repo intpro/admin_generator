@@ -136,7 +136,7 @@ class AdminGenerator implements AdminGeneratorInterface{
                                 fwrite($block_file,'<td></td>'.PHP_EOL);
                                 fwrite($block_file,'<td></td>'.PHP_EOL);
                                 fwrite($block_file,'<td></td>'.PHP_EOL);
-                                fwrite($block_file,'</td>'.PHP_EOL);
+                                fwrite($block_file,'<td>'.PHP_EOL);
                                 fwrite($block_file,wrap::anyCreate($blockname,$item_name));
                                 fwrite($block_file,'</td>'.PHP_EOL);
                                 fwrite($block_file,'</tr>'.PHP_EOL);
