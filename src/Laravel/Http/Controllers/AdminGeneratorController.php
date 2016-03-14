@@ -6,13 +6,37 @@ use Interpro\AdminGenerator\Laravel\AdminGenerator;
 class AdminGeneratorController extends Controller
 {
 
-    public function index()
+    public function generateAll()
     {
+
+        try{
         $generator = new AdminGenerator;
+            $generator->MakeDirectory();
+        $config = config('qstorage');
+        $msg = '';
+        foreach($config as $key=>$value) {
+            $generator->makeBlock($key);
+            $msg += 'Блок сгенерирован  ' . $key . '</br>';
+        }
+            return $msg;
+        }catch(\Exception $exception){
+            return 'Что то пошло не так'.$exception->getMessage();
+        }
 
-            $generator->makeBlock('dom_program');
 
-        return 'ok';
+
+
+    }
+    public function generateBlock($block)
+    {
+        try{
+            $generator = new AdminGenerator;
+            $generator->MakeDirectory();
+            $generator->makeBlock($block);
+            return 'Блок сгенерирован  ' . $block . '</br>';
+        }catch(\Exception $exception){
+            return 'Что то пошло не так'.$exception->getMessage();
+        }
 
     }
 
