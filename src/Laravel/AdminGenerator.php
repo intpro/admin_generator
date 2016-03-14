@@ -111,7 +111,15 @@ class AdminGenerator implements AdminGeneratorInterface{
                             if (array_key_exists($item,$page_config)){
                                 fwrite($block_file,'<table>'.PHP_EOL);
                                 fwrite($block_file,'<thead>'.PHP_EOL);
-                                fwrite($block_file,'<thead>'.PHP_EOL);
+                                fwrite($block_file,'<tr>'.PHP_EOL);
+                                fwrite($block_file,'<td>Название</td>'.PHP_EOL);
+                                fwrite($block_file,'<td></td>'.PHP_EOL);
+                                fwrite($block_file,'<td>Публикации</td>'.PHP_EOL);
+                                fwrite($block_file,'<td>Сортировка</td>'.PHP_EOL);
+                                fwrite($block_file,'<td>Редактировать</td>'.PHP_EOL);
+                                fwrite($block_file,'<td>Удалить</td>'.PHP_EOL);
+                                fwrite($block_file,'</tr>'.PHP_EOL);
+                                fwrite($block_file,'</thead>'.PHP_EOL);
                                 fwrite($block_file,wrap::makePageContainer($blockname,$item));
                                 fwrite($block_file,'@foreach($'.$blockname.'->'.$item.'_group as $item_'.$item.' )'.PHP_EOL);
                                 if ($item === 0){
@@ -122,8 +130,19 @@ class AdminGenerator implements AdminGeneratorInterface{
                                 fwrite($block_file,'@endforeach'.PHP_EOL);
                                 fwrite($block_file,wrap::makeEndPageContainer());
                                 fwrite($block_file,'<tfoot>'.PHP_EOL);
-                                fwrite($block_file,wrap::anyCreate($blockname,$item));
+                                fwrite($block_file,'<tr>'.PHP_EOL);
+                                fwrite($block_file,'<td></td>'.PHP_EOL);
+                                fwrite($block_file,'<td></td>'.PHP_EOL);
+                                fwrite($block_file,'<td></td>'.PHP_EOL);
+                                fwrite($block_file,'<td></td>'.PHP_EOL);
+                                fwrite($block_file,'<td></td>'.PHP_EOL);
+                                fwrite($block_file,'</td>'.PHP_EOL);
+                                fwrite($block_file,wrap::anyCreate($blockname,$item_name));
+                                fwrite($block_file,'</td>'.PHP_EOL);
+                                fwrite($block_file,'</tr>'.PHP_EOL);
+
                                 fwrite($block_file,'</tfoot>'.PHP_EOL);
+                                fwrite($block_file,'</table>'.PHP_EOL);
                                 fwrite($block_file,'</table>'.PHP_EOL);
                             }else{
                                 fwrite($block_file, wrap::blockWrap());

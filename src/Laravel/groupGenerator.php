@@ -214,6 +214,7 @@ class groupGenerator
                     fwrite($block_file,'<td>Редактировать</td>'.PHP_EOL);
                     fwrite($block_file,'<td>Удалить</td>'.PHP_EOL);
                     fwrite($block_file,'</tr>'.PHP_EOL);
+                    fwrite($block_file,'</thead>'.PHP_EOL);
                     fwrite($block_file,wrap::makePageContainer($blockname,$item_name,true));
                     fwrite($block_file,'@foreach($'.$blockname.'->'.$item_name.'_group as $item_'.$item_name.' )'.PHP_EOL);
                     $admin->makeGroup($blockname,$item_name);
