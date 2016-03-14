@@ -6,9 +6,9 @@ use Interpro\AdminGenerator\Laravel\AdminGenerator;
 class AdminGeneratorController extends Controller
 {
 
+    // Сгенерировать весь конфиг
     public function generateAll()
     {
-
         try{
         $generator = new AdminGenerator;
             $generator->MakeDirectory();
@@ -22,11 +22,8 @@ class AdminGeneratorController extends Controller
         }catch(\Exception $exception){
             return 'Что то пошло не так'.$exception->getMessage();
         }
-
-
-
-
     }
+    // Сгенерировать один блок
     public function generateBlock($block)
     {
         try{
