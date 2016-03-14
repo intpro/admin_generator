@@ -254,7 +254,7 @@ class groupGenerator
         fwrite($block_file,' @if( $item_'.$groupname.'->show_field)'.PHP_EOL);
         fwrite($block_file,'    <option value="true" selected> Опубликовано</option>'.PHP_EOL);
         fwrite($block_file,'    <option value="false">Не опубликовано</option>'.PHP_EOL);
-        fwrite($block_file,' @elseif'.PHP_EOL);
+        fwrite($block_file,' @else'.PHP_EOL);
         fwrite($block_file,'    <option value="true" > Опубликовано</option>'.PHP_EOL);
         fwrite($block_file,'    <option value="false" selected>Не опубликовано</option>'.PHP_EOL);
         fwrite($block_file,' @endif'.PHP_EOL);
