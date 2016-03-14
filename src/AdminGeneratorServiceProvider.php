@@ -13,6 +13,7 @@ class AdminGeneratorServiceProvider extends ServiceProvider
     }
     public function boot(){
         require __DIR__ . '/Laravel/Http/routes.php';
+        $this->publishes([__DIR__.'/Laravel/config/page.php' => config_path('page.php')]);
     }
 
 }

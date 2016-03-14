@@ -119,7 +119,7 @@ class wrap
         return $groupsave.PHP_EOL;
     }
     public static function deleteGroup($blockname,$groupname){
-        $template = '<button type="button" class="any_delete" data-block="%block%" data-group="%group%" data-entity="groupitem" data-item-id="%id%" data-descr="Эл. первой группы"> Сохранить</button>';
+        $template = '<button type="button" class="any_delete" data-block="%block%" data-group="%group%" data-entity="groupitem" data-item-id="%id%" data-descr="Эл. первой группы"> Удалить</button>';
         $replaced = array(
             '%block%',
             '%group%',

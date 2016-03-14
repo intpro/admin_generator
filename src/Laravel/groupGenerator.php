@@ -245,9 +245,22 @@ class groupGenerator
 
         $block_file = fopen(public_path().'/../resources/views/back/blocks/groupitems/'.$blockname.'/'.$groupname.'.blade.php','w+');
 
-        fwrite($block_file,'<tr>'.PHP_EOL);
+        fwrite($block_file,'<tr data-sorter="{{$item_'.$groupname.'->sorter_field}}" data-id="{{$item_'.$groupname.'->id_field}}">'.PHP_EOL);
         fwrite($block_file,'<td><a href="">{{$item_'.$groupname.'->name_field}}</a></td>'.PHP_EOL);
         fwrite($block_file,'<td></td>'.PHP_EOL);
+        fwrite($block_file,'<td></td>'.PHP_EOL);
+        fwrite($block_file,'<td>'.PHP_EOL);
+        fwrite($block_file,' <select class="publicated">'.PHP_EOL);
+        fwrite($block_file,' @if( $item_'.$groupname.'->show_field)'.PHP_EOL);
+        fwrite($block_file,'    <option value="true" selected> Опубликовано</option>'.PHP_EOL);
+        fwrite($block_file,'    <option value="false">Не опубликовано</option>'.PHP_EOL);
+        fwrite($block_file,' @elseif'.PHP_EOL);
+        fwrite($block_file,'    <option value="true" > Опубликовано</option>'.PHP_EOL);
+        fwrite($block_file,'    <option value="false" selected>Не опубликовано</option>'.PHP_EOL);
+        fwrite($block_file,' @endif'.PHP_EOL);
+        fwrite($block_file,' </select>'.PHP_EOL);
+        fwrite($block_file,'</td>'.PHP_EOL);
+        fwrite($block_file,'<td> <div class="sort_buttons"><div class="up-button"></div><div class="down-button"></div></div></td>'.PHP_EOL);
         fwrite($block_file,'<td>'.wrap::deleteGroup($blockname,$groupname).'</td>'.PHP_EOL);
         fwrite($block_file,'</tr>'.PHP_EOL);
         fclose($block_file);
