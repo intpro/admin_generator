@@ -267,7 +267,6 @@ class groupGenerator
         fwrite($block_file,'<tr data-sorter="{{$item_'.$groupname.'->sorter_field}}" data-id="{{$item_'.$groupname.'->id_field}}">'.PHP_EOL);
         fwrite($block_file,'<td><a href="">{{$item_'.$groupname.'->name_field}}</a></td>'.PHP_EOL);
         fwrite($block_file,'<td></td>'.PHP_EOL);
-        fwrite($block_file,'<td></td>'.PHP_EOL);
         fwrite($block_file,'<td>'.PHP_EOL);
         fwrite($block_file,' <select class="publicated">'.PHP_EOL);
         fwrite($block_file,' @if( $item_'.$groupname.'->show_field)'.PHP_EOL);
@@ -280,6 +279,7 @@ class groupGenerator
         fwrite($block_file,' </select>'.PHP_EOL);
         fwrite($block_file,'</td>'.PHP_EOL);
         fwrite($block_file,'<td> <div class="sort_buttons"><div class="up-button"></div><div class="down-button"></div></div></td>'.PHP_EOL);
+        fwrite($block_file,'<td><a href="/adm/edit/'.$groupname.'/$item_'.$groupname.'->id_field">Редактировать</a></td>'.PHP_EOL);
         fwrite($block_file,'<td>'.wrap::deleteGroup($blockname,$groupname).'</td>'.PHP_EOL);
         fwrite($block_file,'</tr>'.PHP_EOL);
         fclose($block_file);
