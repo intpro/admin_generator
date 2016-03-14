@@ -232,7 +232,6 @@ class groupGenerator
                     fwrite($block_file,wrap::anyCreate($blockname,$item_name));
                     fwrite($block_file,'</td>'.PHP_EOL);
                     fwrite($block_file,'</tr>'.PHP_EOL);
-
                     fwrite($block_file,'</tfoot>'.PHP_EOL);
                     fwrite($block_file,'</table>'.PHP_EOL);
                     fwrite($block_file,wrap::endBlockWrap());

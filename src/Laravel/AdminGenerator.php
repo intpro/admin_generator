@@ -109,6 +109,7 @@ class AdminGenerator implements AdminGeneratorInterface{
                         if(!array_key_exists('owner',$item_name)){
                             $page_config = config('page');
                             if (array_key_exists($item,$page_config)){
+                                fwrite($block_file, wrap::blockWrap());
                                 fwrite($block_file,'<table>'.PHP_EOL);
                                 fwrite($block_file,'<thead>'.PHP_EOL);
                                 fwrite($block_file,'<tr>'.PHP_EOL);
@@ -143,7 +144,7 @@ class AdminGenerator implements AdminGeneratorInterface{
 
                                 fwrite($block_file,'</tfoot>'.PHP_EOL);
                                 fwrite($block_file,'</table>'.PHP_EOL);
-                                fwrite($block_file,'</table>'.PHP_EOL);
+                                fwrite($block_file, wrap::endBlockWrap());
                             }else{
                                 fwrite($block_file, wrap::blockWrap());
                                 fwrite($block_file, wrap::blockLabel());
