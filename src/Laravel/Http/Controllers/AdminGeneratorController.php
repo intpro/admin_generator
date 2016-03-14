@@ -16,7 +16,7 @@ class AdminGeneratorController extends Controller
         $msg = '';
         foreach($config as $key=>$value) {
             $generator->makeBlock($key);
-            $msg += 'Блок сгенерирован  ' . $key . '</br>';
+            $msg = $msg.'Блок сгенерирован  ' . $key . '</br>';
         }
             return $msg;
         }catch(\Exception $exception){
