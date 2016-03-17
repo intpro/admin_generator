@@ -279,7 +279,7 @@ class groupGenerator
         fwrite($block_file,' </select>'.PHP_EOL);
         fwrite($block_file,'</td>'.PHP_EOL);
         fwrite($block_file,'<td> <div class="sort_buttons"><div class="up-button"></div><div class="down-button"></div></div></td>'.PHP_EOL);
-        fwrite($block_file,'<td><a href="/adm/edit/'.$groupname.'/$item_'.$groupname.'->id_field">Редактировать</a></td>'.PHP_EOL);
+        fwrite($block_file,'<td><a href="/adm/edit/'.$groupname.'/{{$item_'.$groupname.'->id_field}}">Редактировать</a></td>'.PHP_EOL);
         fwrite($block_file,'<td>'.wrap::deleteGroup($blockname,$groupname).'</td>'.PHP_EOL);
         fwrite($block_file,'</tr>'.PHP_EOL);
         fclose($block_file);
