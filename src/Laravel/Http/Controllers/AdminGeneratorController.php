@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use Interpro\AdminGenerator\Laravel\AdminGenerator;
+use Interpro\QuickStorage\Laravel\QueryAgent;
 
 class AdminGeneratorController extends Controller
 {
@@ -35,6 +36,12 @@ class AdminGeneratorController extends Controller
             return 'Что то пошло не так'.$exception->getMessage();
         }
 
+    }
+    public function getLayout(QueryAgent $queryAgent){
+        $images = $queryAgent->getBlock('dom_all_images',[],[]);
+        return view('back.layout', [
+            'dom_all_images' => $images
+        ]);
     }
 
 }
