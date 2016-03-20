@@ -21,6 +21,10 @@ class images
         <input type="hidden" class="secondary_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%secondary%">
         <input type="hidden" class="icon_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%icon%">
     </div>
+    <div class="buttons">
+        <span class="refresh"></span>
+        <span class="clear"></span>
+    </div>
     <img src="/images/%preview%" class="preview" data-field-name="%name%" data-block="%block%">
     <input type="text" placeholder="alt текст" class="alt-text" value="%alt%" data-field-name="%name%" data-block="%block%">
     <label class="file-input">
@@ -63,6 +67,10 @@ class images
         <input type="hidden" class="primary_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%primary%">
         <input type="hidden" class="secondary_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%secondary%">
         <input type="hidden" class="icon_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%icon%">
+    </div>
+    <div class="buttons">
+        <span class="refresh"></span>
+        <span class="clear"></span>
     </div>
     <img src="/images/%preview%" class="preview" data-field-name="%name%" data-block="%block%"  data-group="%group%" data-item-id="%id%">
     <input type="text" placeholder="alt текст" class="alt-text" value="%alt%" data-item-id="%id%">
