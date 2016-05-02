@@ -16,13 +16,13 @@
     <script src="/Admin/vendor/trumbowyg/dist/plugins/colors/trumbowyg.colors.js"></script>
     <script src="/Admin/vendor/trumbowyg/dist/plugins/editlink/trumbowyg.editlink.js"></script>
     <script src="/Admin/js/trumbowyg.fonts.js"></script>
+    <script src="/Admin/js/services.js"></script>
+
+
+    <script src="/Admin/js/main.js"></script>
     <script src="/Admin/js/sorter.js"></script>
     <script src="/Admin/js/publicated.js"></script>
 
-    <script src="/Admin/js/main.js"></script>
 
-    <link rel="stylesheet" href="/Admin/css/style.css">
-    <link rel="stylesheet" href="/Admin/css/trumbowyg.min.css">
-    <link rel="stylesheet" href="/Admin/css/trumbowyg.colors.css">
-    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/Admin/css/app.css">
 @endsection
