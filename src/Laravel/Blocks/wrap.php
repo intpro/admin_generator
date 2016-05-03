@@ -17,6 +17,9 @@ class wrap
     public  static function endBlockWrap(){
         return '</div>'.PHP_EOL;
     }
+    public  static function fieldWrap($class = ''){
+        return '<div class="field-wrap '.$class.'">'.PHP_EOL;
+    }
     public static function blockLabel(){
         return '<label class="input-file">'.PHP_EOL;
     }
