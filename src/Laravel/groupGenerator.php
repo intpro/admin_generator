@@ -134,6 +134,8 @@ class groupGenerator
         fwrite($block_file, PHP_EOL);
         fwrite($block_file, '<li class="group" data-group-id="{{$item_' . $groupname . '->id_field}}">');
 
+        fwrite($block_file, wrap::blockWrap());
+
         foreach ($config[$blockname]['groups'][$groupname] as $fields => $field) {
 
 
@@ -238,7 +240,7 @@ class groupGenerator
                     fwrite($block_file, '</table>' . PHP_EOL);
                     fwrite($block_file, wrap::endBlockWrap());
                 } else {
-                    fwrite($block_file, wrap::makeGroupContainer($blockname, $item, true));
+                    fwrite($block_file, wrap::makeGroupContainer($blockname, $item_name, true));
                     fwrite($block_file, '@foreach($' . $blockname . '->' . $item_name . '_group as $item_' . $item_name . ' )' . PHP_EOL);
                     $admin->makeGroup($blockname, $item_name);
                     fwrite($block_file, '@include(' . "'" . 'back.blocks.groupitems.' . $blockname . '.' . $item_name . "'" . ')' . PHP_EOL);
@@ -252,6 +254,7 @@ class groupGenerator
         }
         fwrite($block_file, wrap::fieldWrap('buttons'));
         fwrite($block_file, wrap::saveGroup($blockname, $groupname));
+        fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, '</li>');
         fwrite($block_file, '@endsection');
