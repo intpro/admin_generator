@@ -12,16 +12,16 @@ class AdminGeneratorController extends Controller
     {
         try {
             $generator = new AdminGenerator;
-            $generator->MakeDirectory();
-            $generator->tmpCopy();
-            //$msg = $generator->makeAll();
-            $config = config('qstorage');
-            $msg = '';
-            foreach ($config as $key => $value) {
-                $generator->makeBlock($key);
-                $msg = $msg . 'Блок сгенерирован  ' . $key . '</br>';
-            }
-            return $msg;
+            //$generator->MakeDirectory();
+            //$generator->tmpCopy();
+            $generateStatus = $generator->makeAll();
+            //$config = config('qstorage');
+            //$msg = '';
+            //foreach ($config as $key => $value) {
+            //    $generator->makeBlock($key);
+            //    $msg = $msg . 'Блок сгенерирован  ' . $key . '</br>';
+            //}
+            return $generateStatus;
         } catch (\Exception $exception) {
             return 'Что то пошло не так' . $exception->getMessage();
         }

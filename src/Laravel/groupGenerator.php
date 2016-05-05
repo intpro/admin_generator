@@ -8,6 +8,7 @@
 
 namespace Interpro\AdminGenerator\Laravel;
 
+//use Interpro\AdminGenerator\Concept\groupGenerator as groupGeneratorInterface;
 use Interpro\AdminGenerator\Laravel\Blocks\title;
 use Interpro\AdminGenerator\Laravel\Blocks\stringfields;
 use Interpro\AdminGenerator\Laravel\Blocks\textfields;
@@ -17,8 +18,19 @@ use Interpro\AdminGenerator\Laravel\Blocks\numbs;
 use Interpro\AdminGenerator\Laravel\Blocks\wrap;
 
 
-class groupGenerator
+class groupGenerator //implements groupGeneratorInterface
 {
+
+
+    public function fieldWrite(&$block_file, $field, $Func)
+    {
+        fwrite($block_file, wrap::blockWrap());
+        fwrite($block_file, wrap::blockLabel($field));
+        fwrite($block_file, wrap::endBlockLabel());
+        fwrite($block_file, $Func());
+        fwrite($block_file, wrap::endBlockWrap());
+    }
+
     public static function makeStaticGroup($blockname, $groupname)
     {
         //  dd($groupname);
@@ -37,63 +49,57 @@ class groupGenerator
         //dd($config[$blockname]['groups'][$groupname]);
         foreach ($config[$blockname]['groups'][$groupname] as $fields => $field) {
 
-                if ($fields === 'title') {
-                    fwrite($block_file, wrap::fieldWrap());
-                    fwrite($block_file, wrap::blockLabel());
-                    fwrite($block_file, wrap::endBlockLabel());
-                    fwrite($block_file, title::makeTitle($blockname));
-                    fwrite($block_file, wrap::endBlockWrap());
-                }
+            if ($fields === 'title') {
+                self::fieldWrite($block_file, $field, function () use ($blockname) {
+                    return title::makeTitle($blockname);
+                });
+                continue;
+            }
 
-                if ($fields === 'stringfields') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, stringfields::makeGroupString($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'stringfields') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return stringfields::makeGroupString($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
-                if ($fields === 'textfields') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, textfields::makeGroupText($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'textfields') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return textfields::makeGroupText($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
-                if ($fields === 'images') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, images::makeGroupImage($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'images') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return images::makeGroupImage($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
-                if ($fields === 'numbs') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, numbs::makeGroupNumb($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'numbs') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return numbs::makeGroupNumb($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
-                if ($fields === 'bools') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, bools::makeGroupBool($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'bools') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return bools::makeGroupBool($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
             $struct = $admin->getInvertGroupsStruct($config[$blockname]['groups']);
             foreach ($struct[$groupname] as $item => $item_name) {
@@ -111,6 +117,7 @@ class groupGenerator
         fwrite($block_file, '</li>');
         fclose($block_file);
     }
+
 
     public static function makePageGroup($blockname, $groupname)
     {
@@ -133,62 +140,55 @@ class groupGenerator
         foreach ($config[$blockname]['groups'][$groupname] as $fields => $field) {
 
 
-                if ($fields === 'stringfields') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, stringfields::makeGroupString($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                        if ($item === 'name') {
-                            fwrite($block_file, wrap::fieldWrap());
-                            fwrite($block_file, wrap::blockLabel());
-                            fwrite($block_file, wrap::endBlockLabel());
-                            fwrite($block_file, title::makeSlug($blockname, $groupname));
-                            fwrite($block_file, wrap::endBlockWrap());
-                        }
+            if ($fields === 'stringfields') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return stringfields::makeGroupString($blockname, $groupname, $item);
+                    });
+                    if ($item === 'name') {
+                        self::fieldWrite($block_file, $field, function () use ($blockname, $groupname) {
+                            return title::makeSlug($blockname, $groupname);
+                        });
                     }
                 }
+                continue;
+            }
 
-                if ($fields === 'textfields') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, textfields::makeGroupText($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'textfields') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return textfields::makeGroupText($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
-                if ($fields === 'images') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, images::makeGroupImage($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'images') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return images::makeGroupImage($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
-                if ($fields === 'numbs') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, numbs::makeGroupNumb($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'numbs') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return numbs::makeGroupNumb($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
-                if ($fields === 'bools') {
-                    foreach ($field as $item) {
-                        fwrite($block_file, wrap::fieldWrap());
-                        fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
-                        fwrite($block_file, bools::makeGroupBool($blockname, $groupname, $item));
-                        fwrite($block_file, wrap::endBlockWrap());
-                    }
+            if ($fields === 'bools') {
+                foreach ($field as $item) {
+                    self::fieldWrite($block_file, $field, function () use ($blockname, $groupname, $item) {
+                        return bools::makeGroupBool($blockname, $groupname, $item);
+                    });
                 }
+                continue;
+            }
 
             $struct = $admin->getInvertGroupsStruct($config[$blockname]['groups']);
 
@@ -249,6 +249,7 @@ class groupGenerator
         fwrite($block_file, '@endsection');
         fclose($block_file);
     }
+
 
     public static function makePageStatic($blockname, $groupname)
     {

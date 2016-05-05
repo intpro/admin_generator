@@ -26,9 +26,9 @@ class wrap
         return '<div class="field-wrap ' . $class . '">' . PHP_EOL;
     }
 
-    public static function blockLabel()
+    public static function blockLabel($strlabel = '')
     {
-        return '<label class="input-file">' . PHP_EOL;
+        return '<label class="input-file">' . $strlabel;
     }
 
     public static function endBlockLabel()
@@ -96,7 +96,7 @@ class wrap
     public static function saveBlock($blockname)
     {
         $template = '<button class="btn btn-primary pull-right any_save" data-block="%block%" data-entity="block" data-descr="">
-    <span class="save_button">Сохранить</span>
+        <span class="save_button">Сохранить</span>
 </button>';
         $replaced = array(
             '%block%'
