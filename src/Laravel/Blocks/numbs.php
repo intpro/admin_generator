@@ -11,7 +11,8 @@ namespace Interpro\AdminGenerator\Laravel\blocks;
 
 class numbs
 {
-    public static function makeNumb($blockname, $fieldname){
+    public static function makeNumb($blockname, $fieldname)
+    {
         $template = '<input type="number" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input block_field" value="%value%" placeholder="Целое число">';
         $replaced = array(
             '%name%',
@@ -19,16 +20,19 @@ class numbs
             '%block%',
             '%value%'
         );
-        $replace  = array(
+        $replace = array(
             $fieldname,
             'numb',
             $blockname,
-            "{{\$".$blockname."->".$fieldname."_field}}"
+            "{{\$" . $blockname . "->" . $fieldname . "_field}}"
         );
-        $numb = str_replace($replaced,$replace, $template);
-        return $numb.PHP_EOL;
+        $numb = str_replace($replaced, $replace, $template);
+        return $numb . PHP_EOL;
     }
-    public static function makeGroupNumb($blockname, $groupname, $fieldname){
+
+
+    public static function makeGroupNumb($blockname, $groupname, $fieldname)
+    {
         $template = '<input type="number" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" data-item-id="%id%" class="input group_field" value="%value%" placeholder="Целое число">';
         $replaced = array(
             '%name%',
@@ -37,14 +41,14 @@ class numbs
             '$group',
             '%value%',
             '%id%');
-        $replace  = array(
+        $replace = array(
             $fieldname,
             'numb',
             $blockname,
             $groupname,
-            "{{\$".'item_'.$groupname."->".$fieldname."_field}}",
-            "{{\$".'item_'.$groupname."->id_field}}");
-        $numb = str_replace($replaced,$replace, $template);
-        return $numb.PHP_EOL;
+            "{{\$" . 'item_' . $groupname . "->" . $fieldname . "_field}}",
+            "{{\$" . 'item_' . $groupname . "->id_field}}");
+        $numb = str_replace($replaced, $replace, $template);
+        return $numb . PHP_EOL;
     }
 }

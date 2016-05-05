@@ -37,7 +37,6 @@ class groupGenerator
         //dd($config[$blockname]['groups'][$groupname]);
         foreach ($config[$blockname]['groups'][$groupname] as $fields => $field) {
 
-            if (array_key_exists('title', $config[$blockname]['groups'][$groupname])) {
                 if ($fields === 'title') {
                     fwrite($block_file, wrap::fieldWrap());
                     fwrite($block_file, wrap::blockLabel());
@@ -45,8 +44,7 @@ class groupGenerator
                     fwrite($block_file, title::makeTitle($blockname));
                     fwrite($block_file, wrap::endBlockWrap());
                 }
-            }
-            if (array_key_exists('stringfields', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'stringfields') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -56,8 +54,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
-            if (array_key_exists('textfields', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'textfields') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -67,8 +64,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
-            if (array_key_exists('images', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'images') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -78,8 +74,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
-            if (array_key_exists('numbs', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'numbs') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -89,8 +84,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
-            if (array_key_exists('bools', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'bools') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -100,7 +94,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
+
             $struct = $admin->getInvertGroupsStruct($config[$blockname]['groups']);
             foreach ($struct[$groupname] as $item => $item_name) {
                 fwrite($block_file, '@foreach($item_' . $groupname . '->' . $item_name . '_group as $item_' . $item_name . ' )' . PHP_EOL);
@@ -139,7 +133,6 @@ class groupGenerator
         foreach ($config[$blockname]['groups'][$groupname] as $fields => $field) {
 
 
-            if (array_key_exists('stringfields', $config[$blockname]['groups'][$groupname])) {
                 if ($fields === 'stringfields') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -156,8 +149,7 @@ class groupGenerator
                         }
                     }
                 }
-            }
-            if (array_key_exists('textfields', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'textfields') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -167,8 +159,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
-            if (array_key_exists('images', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'images') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -178,8 +169,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
-            if (array_key_exists('numbs', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'numbs') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -189,8 +179,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
-            if (array_key_exists('bools', $config[$blockname]['groups'][$groupname])) {
+
                 if ($fields === 'bools') {
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
@@ -200,7 +189,7 @@ class groupGenerator
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
-            }
+
             $struct = $admin->getInvertGroupsStruct($config[$blockname]['groups']);
 
             foreach ($struct[$groupname] as $item => $item_name) {

@@ -13,6 +13,8 @@ class AdminGeneratorController extends Controller
         try {
             $generator = new AdminGenerator;
             $generator->MakeDirectory();
+            $generator->tmpCopy();
+            //$msg = $generator->makeAll();
             $config = config('qstorage');
             $msg = '';
             foreach ($config as $key => $value) {
