@@ -31,7 +31,11 @@ class groupGenerator
         $block_file = fopen(public_path() . '/../resources/views/back/blocks/groupitems/' . $blockname . '/' . $groupname . '.blade.php', 'w+');
 
         fwrite($block_file, '<li class="group" data-group-id="{{$item_' . $groupname . '->id_field}}">');
-
+        fwrite($block_file, wrap::otherWrap('title-block'));
+        fwrite($block_file, wrap::otherLabel('group-title'));
+        fwrite($block_file, wrap::endBlockLabel());
+        fwrite($block_file, wrap::deleteGroup($blockname, $groupname));
+        fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, wrap::blockWrap());
 
         //dd($config[$blockname]['groups'][$groupname]);
@@ -111,7 +115,6 @@ class groupGenerator
         }
         fwrite($block_file, wrap::fieldWrap('buttons_block'));
         fwrite($block_file, wrap::saveGroup($blockname, $groupname));
-        fwrite($block_file, wrap::deleteGroup($blockname, $groupname));
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, '</li>');
@@ -202,7 +205,6 @@ class groupGenerator
                 }
             }
             $struct = $admin->getInvertGroupsStruct($config[$blockname]['groups']);
-
             foreach ($struct[$groupname] as $item => $item_name) {
 
                 $page_config = config('page');
@@ -233,20 +235,20 @@ class groupGenerator
                     fwrite($block_file, '<td></td>' . PHP_EOL);
                     fwrite($block_file, '<td></td>' . PHP_EOL);
                     fwrite($block_file, '</td>' . PHP_EOL);
-                    fwrite($block_file, wrap::anyCreate($blockname, $item_name));
+                    fwrite($block_file, wrap::anyCreate($blockname, $item_name, $groupname, true));
                     fwrite($block_file, '</td>' . PHP_EOL);
                     fwrite($block_file, '</tr>' . PHP_EOL);
                     fwrite($block_file, '</tfoot>' . PHP_EOL);
                     fwrite($block_file, '</table>' . PHP_EOL);
                     fwrite($block_file, wrap::endBlockWrap());
                 } else {
-                    fwrite($block_file, wrap::makeGroupContainer($blockname, $item_name, true));
-                    fwrite($block_file, '@foreach($' . $blockname . '->' . $item_name . '_group as $item_' . $item_name . ' )' . PHP_EOL);
+                    fwrite($block_file, wrap::makeGroupContainer($blockname, $groupname, true));
+                    fwrite($block_file, '@foreach($item_' . $groupname . '->' . $item_name . '_group as $item_' . $item_name . ' )' . PHP_EOL);
                     $admin->makeGroup($blockname, $item_name);
                     fwrite($block_file, '@include(' . "'" . 'back.blocks.groupitems.' . $blockname . '.' . $item_name . "'" . ')' . PHP_EOL);
                     fwrite($block_file, '@endforeach' . PHP_EOL);
                     fwrite($block_file, wrap::makeEndGroupContainer());
-                    fwrite($block_file, wrap::anyCreate($blockname, $item_name));
+                    fwrite($block_file, wrap::anyCreate($blockname, $item_name, $groupname, true));
                 }
             }
 
