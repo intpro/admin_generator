@@ -19,7 +19,6 @@ class resize_wrap
         $template .= '[\'width\'=>700, \'height\'=>null, \'sufix\'=>\'primary\'],' . PHP_EOL;
         $template .= '[\'width\'=>500, \'height\'=>null, \'sufix\'=>\'secondary\'],' . PHP_EOL;
         $template .= '[\'width\'=>100, \'height\'=>null, \'sufix\'=>\'preview\'],' . PHP_EOL;
-        $template .= '[\'width\'=>100, \'height\'=>null, \'sufix\'=>\'prefix\'],' . PHP_EOL;
         $template .= '[\'width\'=>100, \'height\'=>null, \'sufix\'=>\'icon\'],' . PHP_EOL;
         $template .= ']' . PHP_EOL . '],';
 
