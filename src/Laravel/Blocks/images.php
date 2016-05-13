@@ -91,7 +91,7 @@ class images
                 <input type="text" placeholder="alt текст" class="alt-text" value="%alt%" data-item-id="%id%" data-field-name="%name%" data-block="%block%">
                 <label class="file-input">
                     Загрузить
-                    <input type="file" accept="image/*" class="input_file block_field" data-field-name="%name%" data-field-type="%type%" data-block="%block%" data-group="%group%" data-item-id="%id%" data-entity="groupitem">
+                    <input type="file" accept="image/*" class="input_file group_field" data-field-name="%name%" data-field-type="%type%" data-block="%block%" data-group="%group%" data-item-id="%id%" data-entity="groupitem">
                 </label>
             </div>
         </div>
