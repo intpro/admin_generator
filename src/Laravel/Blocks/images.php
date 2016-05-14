@@ -19,6 +19,7 @@ class images
             <div class="drag"><input type="text" value="Отпустите клавишу мыши, чтобы загрузить файл"></div>
             <div class="img-hide-block">
                 <input type="hidden" class="prefix" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%prefix%">
+                <input type="hidden" class="original_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%original%">
                 <input type="hidden" class="preview_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%preview%">
                 <input type="hidden" class="primary_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%primary%">
                 <input type="hidden" class="secondary_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%secondary%">
@@ -45,6 +46,7 @@ class images
             '%type%',
             '%block%',
             '%prefix%',
+            '%original%',
             '%preview%',
             '%primary%',
             '%secondary%',
@@ -55,6 +57,7 @@ class images
             'image',
             $blockname,
             "{{\$" . $blockname . "->" . $fieldname . "_image->prefix}}",
+            "{{\$" . $blockname . "->" . $fieldname . "_image->original_link}}",
             "{{\$" . $blockname . "->" . $fieldname . "_image->preview_link}}",
             "{{\$" . $blockname . "->" . $fieldname . "_image->primary_link}}",
             "{{\$" . $blockname . "->" . $fieldname . "_image->secondary_link}}",
@@ -75,6 +78,7 @@ class images
             <div class="drag"><input type="text" value="Отпустите клавишу мыши, чтобы загрузить файл"></div>
             <div class="img-hide-block">
                 <input type="hidden" class="prefix" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%prefix%">
+                <input type="hidden" class="original_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%original%">
                 <input type="hidden" class="preview_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%preview%">
                 <input type="hidden" class="primary_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%primary%">
                 <input type="hidden" class="secondary_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%secondary%">
@@ -103,6 +107,7 @@ class images
             '%block%',
             '%group%',
             '%prefix%',
+            '%original%',
             '%preview%',
             '%primary%',
             '%secondary%',
@@ -115,6 +120,7 @@ class images
             $blockname,
             $groupname,
             "{{\$" . 'item_' . $groupname . "->" . $fieldname . "_image->prefix}}",
+            "{{\$" . 'item_' . $groupname . "->" . $fieldname . "_image->original_link}}",
             "{{\$" . 'item_' . $groupname . "->" . $fieldname . "_image->preview_link}}",
             "{{\$" . 'item_' . $groupname . "->" . $fieldname . "_image->primary_link}}",
             "{{\$" . 'item_' . $groupname . "->" . $fieldname . "_image->secondary_link}}",
