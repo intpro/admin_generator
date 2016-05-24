@@ -84,8 +84,8 @@ class AdminGenerator implements AdminGeneratorInterface{
                     foreach($field as $item){
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, numbs::makeNumb($blockname,$item));
                         fwrite($block_file, wrap::endBlockLabel());
+                        fwrite($block_file, numbs::makeNumb($blockname,$item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
@@ -96,8 +96,8 @@ class AdminGenerator implements AdminGeneratorInterface{
                     foreach($field as $item){
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, bools::makeBool($blockname,$item));
                         fwrite($block_file, wrap::endBlockLabel());
+                        fwrite($block_file, bools::makeBool($blockname,$item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
                 }
@@ -146,6 +146,7 @@ class AdminGenerator implements AdminGeneratorInterface{
                             }else{
                                 fwrite($block_file, wrap::fieldWrap());
                                 fwrite($block_file, wrap::blockLabel());
+                                fwrite($block_file, wrap::endBlockLabel());
                                 fwrite($block_file, wrap::makeGroupContainer($blockname,$item));
                                 fwrite($block_file, '@foreach($'.$blockname.'->'.$item.'_group as $item_'.$item.' )'.PHP_EOL);
                                 $this->makeGroup($blockname,$item);
@@ -153,7 +154,6 @@ class AdminGenerator implements AdminGeneratorInterface{
                                 fwrite($block_file, '@endforeach'.PHP_EOL);
                                 fwrite($block_file, wrap::makeEndGroupContainer());
                                 fwrite($block_file, wrap::anyCreate($blockname,$item));
-                                fwrite($block_file, wrap::endBlockLabel());
                                 fwrite($block_file, wrap::endBlockWrap());
                             }
                         }
