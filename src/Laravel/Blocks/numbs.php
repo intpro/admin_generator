@@ -34,7 +34,7 @@ class numbs
             '%name%',
             '%type%',
             '%block%',
-            '$group',
+            '%group%',
             '%value%',
             '%id%');
         $replace  = array(
