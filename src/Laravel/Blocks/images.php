@@ -13,11 +13,10 @@ class images
 {
     public static function makeImage($blockname, $fieldname)
     {
-
         $template = '<div class="image-load">
-        <div class="drag-n-drop">
-            <div class="drag"><input type="text" value="Отпустите клавишу мыши, чтобы загрузить файл"></div>
-            <div class="img-hide-block">
+                <div class="drag-n-drop">
+                    <div class="drag"><input type="text" value="Отпустите клавишу мыши, чтобы загрузить файл"></div>
+                    <div class="img-hide-block">
                 <input type="hidden" class="prefix" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%prefix%">
                 <input type="hidden" class="original_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%original%">
                 <input type="hidden" class="preview_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%preview%">
@@ -25,22 +24,21 @@ class images
                 <input type="hidden" class="secondary_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%secondary%">
                 <input type="hidden" class="icon_link" data-field-name="%name%" data-field-type="%type%" data-block="%block%" value="%icon%">
             </div>
-            <div class="preview-block">
-                <img src="/images/%preview%" class="preview" data-field-name="%name%" data-block="%block%">
-                <div class="buttons">
-                    <span class="refresh"></span>
-                    <span class="clear"></span>
+
+                    <div class="preview-block">
+                        <label class="file-input">
+                            <img src="/images/%preview%" class="preview" data-field-name="%name%" data-block="%block%">
+                            <input type="file" accept="image/*" class="input_file block_field"  data-entity="block" data-field-name="%name%" data-field-type="%type%" data-block="%block%">
+                        </label>
+                    </div>
+
+                    <div class="action-block">
+                        <label class="alt-title">Альтернативный текст (если изображение не удалось загрузить)</label>
+                        <input type="text" placeholder="alt текст" class="alt-text input-field" value="%alt%" data-field-name="%name%" data-block="%block%">
+                    </div>
                 </div>
-            </div>
-            <div class="action-block">
-                <input type="text" placeholder="alt текст" class="alt-text" value="%alt%" data-field-name="%name%" data-block="%block%">
-                <label class="file-input">
-                    Загрузить
-                    <input type="file" accept="image/*" class="input_file block_field"  data-entity="block" data-field-name="%name%" data-field-type="%type%" data-block="%block%">
-                </label>
-            </div>
-        </div>
-    </div>';
+            </div>';
+
         $replaced = array(
             '%name%',
             '%type%',
@@ -74,9 +72,9 @@ class images
     {
 
         $template = '<div class="image-load">
-        <div class="drag-n-drop">
-            <div class="drag"><input type="text" value="Отпустите клавишу мыши, чтобы загрузить файл"></div>
-            <div class="img-hide-block">
+                <div class="drag-n-drop">
+                    <div class="drag"><input type="text" value="Отпустите клавишу мыши, чтобы загрузить файл"></div>
+                    <div class="img-hide-block">
                 <input type="hidden" class="prefix" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%prefix%">
                 <input type="hidden" class="original_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%original%">
                 <input type="hidden" class="preview_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%preview%">
@@ -85,21 +83,24 @@ class images
                 <input type="hidden" class="icon_link" data-field-name="%name%" data-group="%group%" data-field-type="%type%" data-item-id="%id%" data-block="%block%" value="%icon%">
             </div>
             <div class="preview-block">
+            <label class="file-input">
                 <img src="/images/%preview%" class="preview" data-field-name="%name%" data-block="%block%"  data-group="%group%" data-item-id="%id%">
-                <div class="buttons">
-                    <span class="refresh"></span>
-                    <span class="clear"></span>
+<input type="file" accept="image/*" class="input_file group_field" data-field-name="%name%" data-field-type="%type%" data-block="%block%" data-group="%group%" data-item-id="%id%" data-entity="groupitem">                </label>
+            </div>
+
+                    <div class="preview-block">
+                        <label class="file-input">
+                            <img src="/images/%preview%" class="preview" data-field-name="%name%" data-block="%block%">
+                            <input type="file" accept="image/*" class="input_file group_field" data-field-name="%name%" data-field-type="%type%" data-block="%block%" data-group="%group%" data-item-id="%id%" data-entity="groupitem">
+                        </label>
+                    </div>
+
+                    <div class="action-block">
+                        <label class="alt-title">Альтернативный текст (если изображение не удалось загрузить)</label>
+                        <input type="text" placeholder="alt текст" class="alt-text" value="%alt%" data-item-id="%id%" data-field-name="%name%" data-block="%block%">
+                    </div>
                 </div>
-            </div>
-            <div class="action-block">
-                <input type="text" placeholder="alt текст" class="alt-text" value="%alt%" data-item-id="%id%" data-field-name="%name%" data-block="%block%">
-                <label class="file-input">
-                    Загрузить
-                    <input type="file" accept="image/*" class="input_file group_field" data-field-name="%name%" data-field-type="%type%" data-block="%block%" data-group="%group%" data-item-id="%id%" data-entity="groupitem">
-                </label>
-            </div>
-        </div>
-    </div>';
+            </div>';
 
         $replaced = array(
             '%name%',
