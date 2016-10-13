@@ -33,7 +33,6 @@ class groupGenerator
         fwrite($block_file, '<li class="group" data-group-id="{{$item_' . $groupname . '->id_field}}">');
         fwrite($block_file, wrap::otherWrap('title-block'));
         fwrite($block_file, wrap::otherLabel('group-title'));
-        fwrite($block_file, wrap::endBlockLabel());
         fwrite($block_file, wrap::deleteGroup($blockname, $groupname));
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, wrap::blockWrap());
@@ -45,7 +44,7 @@ class groupGenerator
                 if ($fields === 'title') {
                     fwrite($block_file, wrap::fieldWrap());
                     fwrite($block_file, wrap::blockLabel());
-                    fwrite($block_file, wrap::endBlockLabel());
+
                     fwrite($block_file, title::makeTitle($blockname));
                     fwrite($block_file, wrap::endBlockWrap());
                 }
@@ -55,7 +54,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, stringfields::makeGroupString($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -66,7 +65,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, textfields::makeGroupText($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -77,7 +76,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, images::makeGroupImage($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -88,7 +87,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, numbs::makeGroupNumb($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -99,7 +98,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, bools::makeGroupBool($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -147,13 +146,13 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, stringfields::makeGroupString($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                         if ($item === 'name') {
                             fwrite($block_file, wrap::fieldWrap());
                             fwrite($block_file, wrap::blockLabel());
-                            fwrite($block_file, wrap::endBlockLabel());
+
                             fwrite($block_file, title::makeSlug($blockname, $groupname));
                             fwrite($block_file, wrap::endBlockWrap());
                         }
@@ -165,7 +164,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, textfields::makeGroupText($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -176,7 +175,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, images::makeGroupImage($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -187,7 +186,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, numbs::makeGroupNumb($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -198,7 +197,7 @@ class groupGenerator
                     foreach ($field as $item) {
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
+
                         fwrite($block_file, bools::makeGroupBool($blockname, $groupname, $item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
