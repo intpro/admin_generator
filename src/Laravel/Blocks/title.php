@@ -11,7 +11,7 @@ namespace Interpro\AdminGenerator\Laravel\blocks;
 class title
 {
     public static function makeTitle($blockname){
-        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input block_pre_field" value="%value%" placeholder="Заголовок">';
+        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input-field title block_pre_field" value="%value%" placeholder="Заголовок страницы">';
         $replaced = array(
             '%name%',
             '%type%',
@@ -30,7 +30,7 @@ class title
     }
     public static function makeSlug($blockname,$groupname){
 
-        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" class="input group_pre_field" value="%value%" data-item-id="%id%" placeholder="Строка">';
+        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" class="input-field title group_pre_field" value="%value%" data-item-id="%id%" placeholder="Заголовок страницы">';
         $replaced = array(
             '%name%',
             '%type%',
@@ -49,6 +49,8 @@ class title
         $string = str_replace($replaced,$replace, $template);
         return $string.PHP_EOL;
     }
+
+
     public static function makeShowBlock($blockname){
 
     }

@@ -13,7 +13,7 @@ class bools
 {
     public static function makeBool($blockname, $fieldname)
     {
-        $template = '<label><input type="checkbox" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input block_field" value="%value%">%name%</label>';
+        $template = '<div class="checkbox"><label class="click-wrap"><input type="checkbox" class="checkbox-widget input block_field" data-field-type="%type%" data-field-name="%name%" data-block="%block%"  value="%value%"><label for="checkbox-widget" class="checkbox-label">Вкл</label></label></div>';
         $replaced = array(
             '%name%',
             '%type%',
@@ -30,7 +30,7 @@ class bools
 
     public static function makeGroupBool($blockname, $groupname, $fieldname)
     {
-        $template = '<label><input type="checkbox" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" data-item-id="%id%" class="input group_field" value="%value%">%name%</label>';
+        $template = '<div class="checkbox"><label class="click-wrap"><input type="checkbox" class="checkbox-widget input group_field" data-field-type="%type%" data-item-id="%id%" data-field-name="%name%" data-block="%block%"  value="%value%"><label for="checkbox-widget" class="checkbox-label">Вкл</label></label></div>';
         $replaced = array(
             '%name%',
             '%type%',

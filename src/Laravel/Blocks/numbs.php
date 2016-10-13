@@ -12,7 +12,7 @@ namespace Interpro\AdminGenerator\Laravel\blocks;
 class numbs
 {
     public static function makeNumb($blockname, $fieldname){
-        $template = '<input type="number" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input block_field" value="%value%" placeholder="Целое число">';
+        $template = '<input type="number" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input-field block_field" value="%value%" placeholder="Целое число">';
         $replaced = array(
             '%name%',
             '%type%',
@@ -29,7 +29,7 @@ class numbs
         return $numb.PHP_EOL;
     }
     public static function makeGroupNumb($blockname, $groupname, $fieldname){
-        $template = '<input type="number" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" data-item-id="%id%" class="input group_field" value="%value%" placeholder="Целое число">';
+        $template = '<input type="number" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" data-item-id="%id%" class="input-field group_field" value="%value%" placeholder="Целое число">';
         $replaced = array(
             '%name%',
             '%type%',

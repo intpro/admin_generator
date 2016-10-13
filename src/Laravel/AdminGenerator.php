@@ -32,7 +32,6 @@ class AdminGenerator implements AdminGeneratorInterface{
         fwrite($block_file, PHP_EOL);
         fwrite($block_file, '@section(\'content\')');
         fwrite($block_file, PHP_EOL);
-        fwrite($block_file, wrap::blockWrap());
 
         foreach($config[$blockname] as $fields => $field){
 
@@ -40,7 +39,6 @@ class AdminGenerator implements AdminGeneratorInterface{
                 if($fields === 'title'){
                     fwrite($block_file, wrap::fieldWrap());
                     fwrite($block_file, wrap::blockLabel());
-                    fwrite($block_file, wrap::endBlockLabel());
                     fwrite($block_file, title::makeTitle($blockname));
                     fwrite($block_file, wrap::endBlockWrap());
                 }
@@ -51,7 +49,6 @@ class AdminGenerator implements AdminGeneratorInterface{
                     foreach($field as $item){
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
                         fwrite($block_file, stringfields::makeString($blockname,$item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -62,7 +59,6 @@ class AdminGenerator implements AdminGeneratorInterface{
                     foreach($field as $item){
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
                         fwrite($block_file, textfields::makeText($blockname,$item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -73,7 +69,6 @@ class AdminGenerator implements AdminGeneratorInterface{
                     foreach($field as $item){
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
                         fwrite($block_file, images::makeImage($blockname,$item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }
@@ -84,7 +79,6 @@ class AdminGenerator implements AdminGeneratorInterface{
                     foreach($field as $item){
                         fwrite($block_file, wrap::fieldWrap());
                         fwrite($block_file, wrap::blockLabel());
-                        fwrite($block_file, wrap::endBlockLabel());
                         fwrite($block_file, numbs::makeNumb($blockname,$item));
                         fwrite($block_file, wrap::endBlockWrap());
                     }

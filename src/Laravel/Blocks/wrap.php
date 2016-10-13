@@ -33,17 +33,12 @@ class wrap
 
     public static function blockLabel()
     {
-        return '<label class="input-file">' . PHP_EOL;
+        return '<label class="field-title"> Заголовок </label>' . PHP_EOL;
     }
 
     public static function otherLabel($class = '')
     {
         return '<label class="' . $class . '">' . PHP_EOL;
-    }
-
-    public static function endBlockLabel()
-    {
-        return '</label>' . PHP_EOL;
     }
 
     public static function makeGroupContainer($blockname, $groupname, $owner = false)

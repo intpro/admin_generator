@@ -12,7 +12,7 @@ namespace Interpro\AdminGenerator\Laravel\blocks;
 class stringfields
 {
     public static function makeString($blockname, $fieldname){
-        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input block_field" value="%value%" placeholder="Строка">';
+        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" class="input-field block_field" value="%value%" placeholder="Строка">';
 
         $replaced = array(
             '%name%',
@@ -35,7 +35,7 @@ class stringfields
 
     public static function makeGroupString($blockname, $groupname, $fieldname){
 
-        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" class="input group_field" value="%value%" data-item-id="%id%" placeholder="Строка">';
+        $template = '<input type="text" data-field-type="%type%" data-field-name="%name%" data-block="%block%" data-group="%group%" class="input-field group_field" value="%value%" data-item-id="%id%" placeholder="Строка">';
         $replaced = array(
             '%name%',
             '%type%',
