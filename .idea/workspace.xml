@@ -65,6 +65,7 @@
         <option value="$PROJECT_DIR$/src/Laravel/Blocks/stringfields.php" />
         <option value="$PROJECT_DIR$/src/Laravel/AdminGenerator.php" />
         <option value="$PROJECT_DIR$/src/Laravel/Blocks/numbs.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -298,6 +299,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.6060605">
           <caret line="93" column="79" selection-start-line="93" selection-start-column="79" selection-end-line="93" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.026275115">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
           <folding />
         </state>
       </provider>
