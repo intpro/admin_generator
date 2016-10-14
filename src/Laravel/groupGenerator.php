@@ -212,38 +212,32 @@ class groupGenerator
                 $page_config = config('page');
                 if (array_key_exists($item, $page_config)) {
                     fwrite($block_file, wrap::fieldWrap());
-                    fwrite($block_file, '<table>' . PHP_EOL);
-                    fwrite($block_file, '<thead>' . PHP_EOL);
-                    fwrite($block_file, '<tr>' . PHP_EOL);
-                    fwrite($block_file, '<td>Название</td>' . PHP_EOL);
-                    fwrite($block_file, '<td></td>' . PHP_EOL);
-                    fwrite($block_file, '<td>Публикации</td>' . PHP_EOL);
-                    fwrite($block_file, '<td>Сортировка</td>' . PHP_EOL);
-                    fwrite($block_file, '<td>Редактировать</td>' . PHP_EOL);
-                    fwrite($block_file, '<td>Удалить</td>' . PHP_EOL);
-                    fwrite($block_file, '</tr>' . PHP_EOL);
-                    fwrite($block_file, '</thead>' . PHP_EOL);
+                    fwrite($block_file, wrap::fieldWrap());
+                    fwrite($block_file, '<div class="row-title">');
+                    fwrite($block_file, '<div class="col-1-5">Название</div>');
+                    fwrite($block_file, '<div class="col-1-5">Дата изменения/div>');
+                    fwrite($block_file, '<div class="col-1-5">Позиция</div>');
+                    fwrite($block_file, '<div class="col-1-5"></div>');
+                    fwrite($block_file, '<div class="col-1-5"></div>');
+                    fwrite($block_file, '</div>');
                     fwrite($block_file, wrap::makePageContainer($blockname, $item_name, true));
                     fwrite($block_file, '@foreach($' . $blockname . '->' . $item_name . '_group as $item_' . $item_name . ' )' . PHP_EOL);
                     $admin->makeGroup($blockname, $item_name);
                     fwrite($block_file, '@include(' . "'" . 'back.blocks.groupitems.' . $blockname . '.' . $item_name . "'" . ')' . PHP_EOL);
                     fwrite($block_file, '@endforeach' . PHP_EOL);
                     fwrite($block_file, wrap::makeEndPageContainer());
-                    fwrite($block_file, '<tfoot>' . PHP_EOL);
-                    fwrite($block_file, '<tr>' . PHP_EOL);
-                    fwrite($block_file, '<td></td>' . PHP_EOL);
-                    fwrite($block_file, '<td></td>' . PHP_EOL);
-                    fwrite($block_file, '<td></td>' . PHP_EOL);
-                    fwrite($block_file, '<td></td>' . PHP_EOL);
-                    fwrite($block_file, '<td></td>' . PHP_EOL);
-                    fwrite($block_file, '</td>' . PHP_EOL);
-                    fwrite($block_file, wrap::anyCreate($blockname, $item_name, $groupname, true));
-                    fwrite($block_file, '</td>' . PHP_EOL);
-                    fwrite($block_file, '</tr>' . PHP_EOL);
-                    fwrite($block_file, '</tfoot>' . PHP_EOL);
-                    fwrite($block_file, '</table>' . PHP_EOL);
+                    fwrite($block_file, '<div class="col-1-2">');
+                    fwrite($block_file, wrap::anyCreate($blockname,$item));
+                    fwrite($block_file, '</div">');
+                    fwrite($block_file, '<div class="col-1-2 disabled">');
+                    fwrite($block_file, '</div>');
                     fwrite($block_file, wrap::endBlockWrap());
                 } else {
+                    fwrite($block_file, wrap::fieldWrap('group-wrap'));
+                    fwrite($block_file, '<div class="group-title-row">');
+                    fwrite($block_file, '<label class="group-title">'.$item.'</label>');
+                    fwrite($block_file, wrap::anyCreate($blockname,$item));
+                    fwrite($block_file, '</div>');
                     fwrite($block_file, wrap::makeGroupContainer($blockname, $groupname, true));
                     fwrite($block_file, '@foreach($item_' . $groupname . '->' . $item_name . '_group as $item_' . $item_name . ' )' . PHP_EOL);
                     $admin->makeGroup($blockname, $item_name);
@@ -256,7 +250,7 @@ class groupGenerator
 
 
         }
-        fwrite($block_file, wrap::fieldWrap('buttons'));
+        fwrite($block_file, wrap::fieldWrap('buttons disabled'));
         fwrite($block_file, wrap::saveGroup($blockname, $groupname));
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, wrap::endBlockWrap());
@@ -273,24 +267,13 @@ class groupGenerator
 
         $block_file = fopen(public_path() . '/../resources/views/back/blocks/groupitems/' . $blockname . '/' . $groupname . '.blade.php', 'w+');
 
-        fwrite($block_file, '<tr data-sorter="{{$item_' . $groupname . '->sorter_field}}" data-id="{{$item_' . $groupname . '->id_field}}">' . PHP_EOL);
-        fwrite($block_file, '<td><a href="">{{$item_' . $groupname . '->title_field}}</a></td>' . PHP_EOL);
-        fwrite($block_file, '<td></td>' . PHP_EOL);
-        fwrite($block_file, '<td>' . PHP_EOL);
-        fwrite($block_file, ' <select class="publicated">' . PHP_EOL);
-        fwrite($block_file, ' @if( $item_' . $groupname . '->show_field)' . PHP_EOL);
-        fwrite($block_file, '    <option value="true" selected> Опубликовано</option>' . PHP_EOL);
-        fwrite($block_file, '    <option value="false">Не опубликовано</option>' . PHP_EOL);
-        fwrite($block_file, ' @else' . PHP_EOL);
-        fwrite($block_file, '    <option value="true" > Опубликовано</option>' . PHP_EOL);
-        fwrite($block_file, '    <option value="false" selected>Не опубликовано</option>' . PHP_EOL);
-        fwrite($block_file, ' @endif' . PHP_EOL);
-        fwrite($block_file, ' </select>' . PHP_EOL);
-        fwrite($block_file, '</td>' . PHP_EOL);
-        fwrite($block_file, '<td> <div class="sort_buttons"><div class="up-button"></div><div class="down-button"></div></div></td>' . PHP_EOL);
-        fwrite($block_file, '<td><a href="/adm/edit/' . $groupname . '/{{$item_' . $groupname . '->id_field}}">Редактировать</a></td>' . PHP_EOL);
-        fwrite($block_file, '<td>' . wrap::deleteGroup($blockname, $groupname) . '</td>' . PHP_EOL);
-        fwrite($block_file, '</tr>' . PHP_EOL);
+        fwrite($block_file, '<div data-sorter="{{$item_' . $groupname . '->sorter_field}}" data-id="{{$item_' . $groupname . '->id_field}}">' . PHP_EOL);
+        fwrite($block_file, '<div class="column-item"><a href="/adm/edit/' . $groupname . '/{{$item_' . $groupname . '->id_field}}">{{$item_'.$groupname.'->title_field}}</a></div>' . PHP_EOL);
+        fwrite($block_file, '<div class="column-item"></div>' . PHP_EOL);
+        fwrite($block_file, '<div class="column-item">{{$item_'.$groupname.'->sorter_field</div>' . PHP_EOL);
+        fwrite($block_file, '<div class="column-item"></div>' . PHP_EOL);
+        fwrite($block_file, '<div class="column-item">'.wrap::deleteGroup($blockname, $groupname).'</div>' . PHP_EOL);
+        fwrite($block_file, '</div>' . PHP_EOL);
         fclose($block_file);
     }
 

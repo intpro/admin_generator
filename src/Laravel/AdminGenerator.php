@@ -105,42 +105,29 @@ class AdminGenerator implements AdminGeneratorInterface{
                             $page_config = config('page');
                             if (array_key_exists($item,$page_config)){
                                 fwrite($block_file, wrap::fieldWrap());
-                                fwrite($block_file, '<table>'.PHP_EOL);
-                                fwrite($block_file, '<thead>'.PHP_EOL);
-                                fwrite($block_file, '<tr>'.PHP_EOL);
-                                fwrite($block_file, '<td>Название</td>'.PHP_EOL);
-                                fwrite($block_file, '<td></td>'.PHP_EOL);
-                                fwrite($block_file, '<td>Публикации</td>'.PHP_EOL);
-                                fwrite($block_file, '<td>Сортировка</td>'.PHP_EOL);
-                                fwrite($block_file, '<td>Редактировать</td>'.PHP_EOL);
-                                fwrite($block_file, '<td>Удалить</td>'.PHP_EOL);
-                                fwrite($block_file, '</tr>'.PHP_EOL);
-                                fwrite($block_file, '</thead>'.PHP_EOL);
+                                fwrite($block_file, '<div class="row-title">');
+                                fwrite($block_file, '<div class="col-1-5">Название</div>');
+                                fwrite($block_file, '<div class="col-1-5">Дата изменения/div>');
+                                fwrite($block_file, '<div class="col-1-5">Позиция</div>');
+                                fwrite($block_file, '<div class="col-1-5"></div>');
+                                fwrite($block_file, '<div class="col-1-5"></div>');
+                                fwrite($block_file, '</div>');
                                 fwrite($block_file, wrap::makePageContainer($blockname,$item));
                                 fwrite($block_file, '@foreach($'.$blockname.'->'.$item.'_group as $item_'.$item.' )'.PHP_EOL);
                                 $this->makeGroup($blockname,$item);
                                 fwrite($block_file, '@include('."'".'back.blocks.groupitems.'.$blockname.'.'.$item."'".')'.PHP_EOL);
                                 fwrite($block_file, '@endforeach'.PHP_EOL);
                                 fwrite($block_file, wrap::makeEndPageContainer());
-                                fwrite($block_file, '<tfoot>'.PHP_EOL);
-                                fwrite($block_file, '<tr>'.PHP_EOL);
-                                fwrite($block_file, '<td></td>'.PHP_EOL);
-                                fwrite($block_file, '<td></td>'.PHP_EOL);
-                                fwrite($block_file, '<td></td>'.PHP_EOL);
-                                fwrite($block_file, '<td></td>'.PHP_EOL);
-                                fwrite($block_file, '<td></td>'.PHP_EOL);
-                                fwrite($block_file, '<td>'.PHP_EOL);
+                                fwrite($block_file, '<div class="col-1-2">');
                                 fwrite($block_file, wrap::anyCreate($blockname,$item));
-                                fwrite($block_file, '</td>'.PHP_EOL);
-                                fwrite($block_file, '</tr>'.PHP_EOL);
-
-                                fwrite($block_file, '</tfoot>'.PHP_EOL);
-                                fwrite($block_file, '</table>'.PHP_EOL);
+                                fwrite($block_file, '</div">');
+                                fwrite($block_file, '<div class="col-1-2 disabled">');
+                                fwrite($block_file, '</div>');
                                 fwrite($block_file, wrap::endBlockWrap());
                             }else{
 
                                 fwrite($block_file, wrap::fieldWrap('group-wrap'));
-                                fwrite($block_file, '<div class="group-title-row"');
+                                fwrite($block_file, '<div class="group-title-row">');
                                 fwrite($block_file, '<label class="group-title">'.$item.'</label>');
                                 fwrite($block_file, wrap::anyCreate($blockname,$item));
                                 fwrite($block_file, '</div>');

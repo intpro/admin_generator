@@ -72,7 +72,7 @@ class wrap
 
     public static function makePageContainer($blockname, $groupname, $owner = false)
     {
-        $template = '<tbody class="group-block group_container" data-block="%block%" data-group="%group%" data-owner-id="%id%">';
+        $template = '<ul class="group-block group_container" data-block="%block%" data-group="%group%" data-owner-id="%id%">';
         if ($owner) {
             $id = '{{$item_' . $groupname . '->id_field}}';
         } else {
@@ -95,13 +95,13 @@ class wrap
 
     public static function makeEndPageContainer()
     {
-        return '</tbody>' . PHP_EOL;
+        return '</ul>' . PHP_EOL;
     }
 
 
     public static function anyCreate($blockname, $groupname, $owner_id = '', $owner = false)
     {
-        $template = '  <button class="any_create buttons blue" data-block="%block%" data-group="%group%"  data-descr="Эл. первой группы" data-owner-id="%id%">Добавить элемент</button>';
+        $template = '  <button class="any_create button blue" data-block="%block%" data-group="%group%"  data-descr="Эл. первой группы" data-owner-id="%id%">Добавить элемент</button>';
         if ($owner) {
             $id = '{{$item_' . $owner_id . '->id_field}}';
         } else {
@@ -159,7 +159,7 @@ class wrap
 
     public static function deleteGroup($blockname, $groupname)
     {
-        $template = '<button type="button" class="any_delete buttons dark" data-block="%block%" data-group="%group%" data-entity="groupitem" data-item-id="%id%" data-descr="Эл. первой группы">Удалить</button>';
+        $template = '<button type="button" class="any_delete button dark" data-block="%block%" data-group="%group%" data-entity="groupitem" data-item-id="%id%" data-descr="Эл. первой группы">Удалить</button>';
         $replaced = array(
             '%block%',
             '%group%',
