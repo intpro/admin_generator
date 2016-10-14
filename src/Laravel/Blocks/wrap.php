@@ -31,6 +31,7 @@ class wrap
         return '<div class="field-wrap ' . $class . '">' . PHP_EOL;
     }
 
+
     public static function blockLabel()
     {
         return '<label class="field-title"> Заголовок </label>' . PHP_EOL;

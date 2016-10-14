@@ -138,16 +138,18 @@ class AdminGenerator implements AdminGeneratorInterface{
                                 fwrite($block_file, '</table>'.PHP_EOL);
                                 fwrite($block_file, wrap::endBlockWrap());
                             }else{
-                                fwrite($block_file, wrap::fieldWrap());
-                                fwrite($block_file, wrap::blockLabel());
 
+                                fwrite($block_file, wrap::fieldWrap('group-wrap'));
+                                fwrite($block_file, '<div class="group-title-row>"');
+                                fwrite($block_file, '<label class="group-title">'.$item.'</label>');
+                                fwrite($block_file, wrap::anyCreate($blockname,$item));
+                                fwrite($block_file, '</div>');
                                 fwrite($block_file, wrap::makeGroupContainer($blockname,$item));
                                 fwrite($block_file, '@foreach($'.$blockname.'->'.$item.'_group as $item_'.$item.' )'.PHP_EOL);
                                 $this->makeGroup($blockname,$item);
                                 fwrite($block_file, '@include('."'".'back.blocks.groupitems.'.$blockname.'.'.$item."'".')'.PHP_EOL);
                                 fwrite($block_file, '@endforeach'.PHP_EOL);
                                 fwrite($block_file, wrap::makeEndGroupContainer());
-                                fwrite($block_file, wrap::anyCreate($blockname,$item));
                                 fwrite($block_file, wrap::endBlockWrap());
                             }
                         }

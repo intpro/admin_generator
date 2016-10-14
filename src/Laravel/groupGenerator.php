@@ -32,8 +32,6 @@ class groupGenerator
 
         fwrite($block_file, '<li class="group" data-group-id="{{$item_' . $groupname . '->id_field}}">');
         fwrite($block_file, wrap::otherWrap('title-block'));
-        fwrite($block_file, wrap::otherLabel('group-title'));
-        fwrite($block_file, wrap::deleteGroup($blockname, $groupname));
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, wrap::blockWrap());
 
@@ -113,7 +111,12 @@ class groupGenerator
 
         }
         fwrite($block_file, wrap::fieldWrap('buttons_block'));
+        fwrite($block_file, '<div class="col-1-2>"');
+        fwrite($block_file, wrap::deleteGroup($blockname, $groupname));
+        fwrite($block_file, '</div>"');
+        fwrite($block_file, '<div class="col-1-2 disabled>"');
         fwrite($block_file, wrap::saveGroup($blockname, $groupname));
+        fwrite($block_file, '</div>');
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, wrap::endBlockWrap());
         fwrite($block_file, '</li>');
@@ -271,7 +274,7 @@ class groupGenerator
         $block_file = fopen(public_path() . '/../resources/views/back/blocks/groupitems/' . $blockname . '/' . $groupname . '.blade.php', 'w+');
 
         fwrite($block_file, '<tr data-sorter="{{$item_' . $groupname . '->sorter_field}}" data-id="{{$item_' . $groupname . '->id_field}}">' . PHP_EOL);
-        fwrite($block_file, '<td><a href="">{{$item_' . $groupname . '->name_field}}</a></td>' . PHP_EOL);
+        fwrite($block_file, '<td><a href="">{{$item_' . $groupname . '->title_field}}</a></td>' . PHP_EOL);
         fwrite($block_file, '<td></td>' . PHP_EOL);
         fwrite($block_file, '<td>' . PHP_EOL);
         fwrite($block_file, ' <select class="publicated">' . PHP_EOL);
