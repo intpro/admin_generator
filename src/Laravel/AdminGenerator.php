@@ -107,7 +107,7 @@ class AdminGenerator implements AdminGeneratorInterface{
                                 fwrite($block_file, wrap::fieldWrap());
                                 fwrite($block_file, '<div class="row-title">');
                                 fwrite($block_file, '<div class="col-1-5">Название</div>');
-                                fwrite($block_file, '<div class="col-1-5">Дата изменения/div>');
+                                fwrite($block_file, '<div class="col-1-5">Дата изменения</div>');
                                 fwrite($block_file, '<div class="col-1-5">Позиция</div>');
                                 fwrite($block_file, '<div class="col-1-5"></div>');
                                 fwrite($block_file, '<div class="col-1-5"></div>');
