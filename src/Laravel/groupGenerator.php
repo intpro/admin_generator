@@ -266,14 +266,15 @@ class groupGenerator
         }
 
         $block_file = fopen(public_path() . '/../resources/views/back/blocks/groupitems/' . $blockname . '/' . $groupname . '.blade.php', 'w+');
-
+        fwrite($block_file, '<li class="row-item">' . PHP_EOL);
         fwrite($block_file, '<div data-sorter="{{$item_' . $groupname . '->sorter_field}}" data-id="{{$item_' . $groupname . '->id_field}}">' . PHP_EOL);
         fwrite($block_file, '<div class="column-item"><a href="/adm/edit/' . $groupname . '/{{$item_' . $groupname . '->id_field}}">{{$item_'.$groupname.'->title_field}}</a></div>' . PHP_EOL);
         fwrite($block_file, '<div class="column-item"></div>' . PHP_EOL);
-        fwrite($block_file, '<div class="column-item">{{$item_'.$groupname.'->sorter_field</div>' . PHP_EOL);
+        fwrite($block_file, '<div class="column-item"><p>{{$item_'.$groupname.'->sorter_field}}</p></div>' . PHP_EOL);
         fwrite($block_file, '<div class="column-item"></div>' . PHP_EOL);
         fwrite($block_file, '<div class="column-item">'.wrap::deleteGroup($blockname, $groupname).'</div>' . PHP_EOL);
         fwrite($block_file, '</div>' . PHP_EOL);
+        fwrite($block_file, '</li>' . PHP_EOL);
         fclose($block_file);
     }
 

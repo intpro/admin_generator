@@ -72,7 +72,7 @@ class wrap
 
     public static function makePageContainer($blockname, $groupname, $owner = false)
     {
-        $template = '<ul class="group-block group_container" data-block="%block%" data-group="%group%" data-owner-id="%id%">';
+        $template = '<ul class="group-block group_container page-group" data-block="%block%" data-group="%group%" data-owner-id="%id%">';
         if ($owner) {
             $id = '{{$item_' . $groupname . '->id_field}}';
         } else {
