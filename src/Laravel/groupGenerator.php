@@ -111,10 +111,10 @@ class groupGenerator
 
         }
         fwrite($block_file, wrap::fieldWrap('buttons_block'));
-        fwrite($block_file, '<div class="col-1-2>"');
+        fwrite($block_file, '<div class="col-1-2">');
         fwrite($block_file, wrap::deleteGroup($blockname, $groupname));
         fwrite($block_file, '</div>"');
-        fwrite($block_file, '<div class="col-1-2 disabled>"');
+        fwrite($block_file, '<div class="col-1-2 disabled">');
         fwrite($block_file, wrap::saveGroup($blockname, $groupname));
         fwrite($block_file, '</div>');
         fwrite($block_file, wrap::endBlockWrap());

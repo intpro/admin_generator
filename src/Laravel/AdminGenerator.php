@@ -140,7 +140,7 @@ class AdminGenerator implements AdminGeneratorInterface{
                             }else{
 
                                 fwrite($block_file, wrap::fieldWrap('group-wrap'));
-                                fwrite($block_file, '<div class="group-title-row>"');
+                                fwrite($block_file, '<div class="group-title-row"');
                                 fwrite($block_file, '<label class="group-title">'.$item.'</label>');
                                 fwrite($block_file, wrap::anyCreate($blockname,$item));
                                 fwrite($block_file, '</div>');

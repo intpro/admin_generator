@@ -101,7 +101,7 @@ class wrap
 
     public static function anyCreate($blockname, $groupname, $owner_id = '', $owner = false)
     {
-        $template = '  <button class="any_create" data-block="%block%" data-group="%group%"  data-descr="Эл. первой группы" data-owner-id="%id%"> Добавить</button>';
+        $template = '  <button class="any_create buttons blue" data-block="%block%" data-group="%group%"  data-descr="Эл. первой группы" data-owner-id="%id%">Добавить элемент</button>';
         if ($owner) {
             $id = '{{$item_' . $owner_id . '->id_field}}';
         } else {
@@ -159,7 +159,7 @@ class wrap
 
     public static function deleteGroup($blockname, $groupname)
     {
-        $template = '<button type="button" class="any_delete" data-block="%block%" data-group="%group%" data-entity="groupitem" data-item-id="%id%" data-descr="Эл. первой группы"> Удалить</button>';
+        $template = '<button type="button" class="any_delete buttons dark" data-block="%block%" data-group="%group%" data-entity="groupitem" data-item-id="%id%" data-descr="Эл. первой группы">Удалить</button>';
         $replaced = array(
             '%block%',
             '%group%',
